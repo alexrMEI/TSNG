@@ -19,7 +19,7 @@ class CreateAnimaisTable extends Migration
             $table->double('peso', 10, 2); 
             $table->string('raca', 191);
             $table->unsignedInteger('idade');
-            $table->string('tipo_animal');
+            $table->string('tipo_animal', 191);
             
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

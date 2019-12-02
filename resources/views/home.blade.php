@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Animais de Estimação</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,18 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @forelse($animaisArray as $animal)
+                        <div class="card w-25">
+                            <div class="card-body">
+                                <h4 class="font-weight-bold">{{ $animaisArray->nome }}</h4>
+                                <p>Raça: {{ $animaisArray->raca }}</p>
+                                <p>Idade: {{ $animaisArray->idade }} anos</p>
+                                <p>Peso: {{ $animaisArray->peso }} Kg</p>
+                            </div>
+                        </div>
+                    @empty
+                        <h4>Sem dados</h4>
+                    @endforelse
                 </div>
             </div>
         </div>

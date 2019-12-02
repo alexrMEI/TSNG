@@ -17,10 +17,10 @@
                     @forelse($animaisArray as $animal)
                         <div class="card w-25">
                             <div class="card-body">
-                                <h4 class="font-weight-bold">{{ $animaisArray->nome }}</h4>
-                                <p>Raça: {{ $animaisArray->raca }}</p>
-                                <p>Idade: {{ $animaisArray->idade }} anos</p>
-                                <p>Peso: {{ $animaisArray->peso }} Kg</p>
+                                <h4 class="font-weight-bold">{{ $animal->nome }}</h4>
+                                <p>Raça: {{ $animal->raca }}</p>
+                                <p>Idade: {{ $animal->idade }} anos</p>
+                                <p>Peso: {{ $animal->peso }} Kg</p>
                             </div>
                         </div>
                     @empty

@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $animaisArray = DB::table('animais')->where('user_id', Auth::id())->get();
+        //dd($animaisArray);
         return view('home')->with(compact('animaisArray'));
     }
 }

@@ -22,3 +22,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Animais
 Route::get('/addAnimal', 'AnimaisController@addForm')->name('addAnimalForm');
 Route::post('/saveAnimal', 'AnimaisController@guardarAnimal')->name('saveAnimal');
+Route::get('/animal/{animal}', 'AnimaisController@viewAnimal')->name('viewAnimal');

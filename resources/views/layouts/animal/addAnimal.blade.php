@@ -45,15 +45,15 @@
 								<option value="outro">Outro</option>
 							</select>
 						</div>
-						<div class="row float-right">
-							<div class="form-group">
+						<div class="float-right">
+							<div class="row form-group">
 	                            <div class="col-md-6 col-md-offset-4">
 	                                <button type="submit" class="btn btn-primary">
 	                                    Criar
 	                                </button>
 	                            </div>
+	                        	<a class="btn btn-secondary" href="{{url()->previous()}}">Voltar</a>
 	                        </div>
-	                        <a class="btn btn-default" href="{{url()->previous()}}">Voltar</a>
 						</div>
 					</form>
 				</div>

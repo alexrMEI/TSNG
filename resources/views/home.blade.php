@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-inline">
+                    <div class="d-inline lead">
                         Animais de Estimação
                     </div>
                     <div class="d-inline float-right">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
 
-                <div class="card-body row">
+                <div class="card-body row d-flex justify-content-center">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -22,9 +22,9 @@
                     @endif
 
                     @forelse($animaisArray as $animal)
-                        <div class="card col-md-3 mr-1">
+                        <div class="card col-md-3 mr-1 mb-1">
                             <div class="card-body">
-                                <h4 class="font-weight-bold">{{ $animal->nome }}</h4>
+                                <h4 class="font-weight-bold"><a href="{{ route('viewAnimal', $animal->id) }}">{{ $animal->nome }}</a></h4>
                                 <p>Raça: {{ $animal->raca }}</p>
                                 <p>Idade: {{ $animal->idade }} anos</p>
                                 <p>Peso: {{ $animal->peso }} Kg</p>

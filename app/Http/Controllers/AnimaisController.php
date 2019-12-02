@@ -39,6 +39,11 @@ class AnimaisController extends Controller
     	$animal->save();
 
         $animaisArray = DB::table('animais')->where('user_id', Auth::id())->get();
-        return view('home')->with(compact('animaisArray'));
+        return redirect()->route('home')->with(compact('animaisArray'));
+    }
+
+    public function viewAnimal($animal){
+        $animalClass = DB::table('animais')->where('id', $animal)->first();
+        return view('layouts.animal.viewAnimal')->with(compact('animalClass'));
     }
 }

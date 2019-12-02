@@ -2,8 +2,11 @@
 
 namespace App;
 
-class Doseador_comida
+use Illuminate\Database\Eloquent\Model;
+
+class Doseador_comida extends Model
 {
+	protected $table = 'doseadores_comida';
     /**
      * The attributes that are mass assignable.
      *

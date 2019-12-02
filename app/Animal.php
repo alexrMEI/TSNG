@@ -2,10 +2,11 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
-class Animal
+class Animal extends Model
 {
+	protected $table = 'animais';
     /**
      * The attributes that are mass assignable.
      *

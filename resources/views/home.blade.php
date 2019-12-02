@@ -5,7 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Animais de Estimação</div>
+                <div class="card-header">
+                    <div class="d-inline">
+                        Animais de Estimação
+                    </div>
+                    <div class="d-inline float-right">
+                        <a class=" btn btn-primary" href="{{ route('addAnimalForm') }}">Adicionar Animal Estimação</a>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))

@@ -16,18 +16,18 @@ class CreateAnimaisTable extends Migration
         Schema::create('animais', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome', 191);
-            $table->double('peso', 10, 2); 
-            $table->string('raca', 191);
-            $table->unsignedInteger('idade');
+            $table->double('peso', 10, 2)->nullable(); 
+            $table->string('raca', 191)->nullable();
+            $table->unsignedInteger('idade')->nullable();
             $table->string('tipo_animal', 191);
             
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('doseador_agua_id');
+            $table->unsignedBigInteger('doseador_agua_id')->nullable();
             $table->foreign('doseador_agua_id')->references('id')->on('doseadores_agua');
 
-            $table->unsignedBigInteger('doseador_comida_id');
+            $table->unsignedBigInteger('doseador_comida_id')->nullable();
             $table->foreign('doseador_comida_id')->references('id')->on('doseadores_comida');
             $table->timestamps();
         });

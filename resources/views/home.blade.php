@@ -14,7 +14,7 @@
                     </div>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body row">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -22,7 +22,7 @@
                     @endif
 
                     @forelse($animaisArray as $animal)
-                        <div class="card w-25">
+                        <div class="card col-md-3 mr-1">
                             <div class="card-body">
                                 <h4 class="font-weight-bold">{{ $animal->nome }}</h4>
                                 <p>Raça: {{ $animal->raca }}</p>

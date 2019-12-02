@@ -37,5 +37,8 @@ class AnimaisController extends Controller
     	$animal->doseador_comida_id = null;
 
     	$animal->save();
+
+        $animaisArray = DB::table('animais')->where('user_id', Auth::id())->get();
+        return view('home')->with(compact('animaisArray'));
     }
 }

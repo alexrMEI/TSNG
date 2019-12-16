@@ -2,7 +2,9 @@
 
 namespace App;
 
-class Doseador_agua
+use Illuminate\Database\Eloquent\Model;
+
+class Doseador_agua extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -10,6 +12,6 @@ class Doseador_agua
      * @var array
      */
     protected $fillable = [
-        'vazio', 'temperatura'
+        'temperatura', 'distancia', 'filling'
     ];
 }

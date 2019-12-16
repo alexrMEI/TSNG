@@ -10,6 +10,6 @@ class Doseador_comida
      * @var array
      */
     protected $fillable = [
-        'vazio'
+        'feeding', 'luminosidade', 'comer', 'altifalante'
     ];
 }

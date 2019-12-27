@@ -6,20 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Animal;
+use App\DoseadorAgua;
+use App\DoseadorComida;
 use Auth;
 
 class AnimaisController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        
-    }
-
     public function addForm(){
     	return view('layouts.animal.addAnimal');
     }
@@ -44,6 +36,58 @@ class AnimaisController extends Controller
 
     public function viewAnimal($animal){
         $animalClass = DB::table('animais')->where('id', $animal)->first();
-        return view('layouts.animal.viewAnimal')->with(compact('animalClass'));
+        $doseadoresAgua = DB::table('animais')->where('doseador_agua_id', '!=', null)->where('id', '!=', $animal)->get();
+        $doseadoresComida = DB::table('animais')->where('doseador_comida_id', '!=', null)->where('id', '!=', $animal)->get();
+        $doseadorAguaAnimal = DB::table('doseadores_agua')->where('id', $animalClass->doseador_agua_id)->first();
+        $doseadorComidaAnimal = DB::table('doseadores_comida')->where('id', $animalClass->doseador_comida_id)->first();
+        return view('layouts.animal.viewAnimal')->with(compact('animalClass', 'doseadoresAgua', 'doseadoresComida', 'doseadorAguaAnimal', 'doseadorComidaAnimal'));
+    }
+
+    public function addDoseadorAgua($animal){
+
+        $doseador = new DoseadorAgua;
+
+        $doseador->vazio = true;
+        $doseador->temperatura = 18.0;
+
+        $doseador->save();
+
+
+        DB::table('animais')->where('id', $animal)->update(['doseador_agua_id' => $doseador->id]);
+
+        return $this->viewAnimal($animal);
+    }
+
+    public function addDoseadorComida($animal){
+        $doseador = new DoseadorComida;
+
+        $doseador->vazio = true;
+
+        $doseador->save();
+
+        DB::table('animais')->where('id', $animal)->update(['doseador_comida_id' => $doseador->id]);
+
+        return $this->viewAnimal($animal);
+    }
+
+    public function updateDoseadorAgua($animal, $doseador){
+        DB::table('animais')->where('id', $animal)->update(['doseador_agua_id' => $doseador]);
+
+        return $this->viewAnimal($animal);
+    }
+
+    public function updateDoseadorComida($animal, $doseador){
+        DB::table('animais')->where('id', $animal)->update(['doseador_comida_id' => $doseador]);
+
+        return $this->viewAnimal($animal);
+    }
+
+
+
+
+    ///////// ## API ## /////////
+
+    public function updateTemperaturaAgua(Request $request, $animalId){
+        
     }
 }

@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->put('/animais/{animalId}/temperaturaAgua', 'AnimaisController@updateTemperaturaAgua');
+
+Route::middleware('auth:api')->put('/animais/{animalId}/quantidadeAgua', 'AnimaisController@updateQuantidadeAgua');
+
+Route::middleware('auth:api')->put('/animais/{animalId}/quantidadeComida', 'AnimaisController@updateQuantidadeComida');

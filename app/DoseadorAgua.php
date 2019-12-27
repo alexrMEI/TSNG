@@ -13,6 +13,6 @@ class DoseadorAgua extends Model
      * @var array
      */
     protected $fillable = [
-        'vazio', 'temperatura'
+        'temperatura', 'distancia', 'filling'
     ];
 }

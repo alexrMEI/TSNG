@@ -13,6 +13,6 @@ class DoseadorComida extends Model
      * @var array
      */
     protected $fillable = [
-        'vazio'
+        'feeding', 'luminosidade', 'comer', 'altifalante'
     ];
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDoseadoresAguaTable extends Migration
+class CreateWateringsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateDoseadoresAguaTable extends Migration
      */
     public function up()
     {
-        Schema::create('doseadores_agua', function (Blueprint $table) {
+        Schema::create('waterings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->double('temperatura', 10, 2);
-            $table->double('distancia', 10, 2);
-            $table->boolean('filling')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateDoseadoresAguaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doseadores_agua');
+        Schema::dropIfExists('waterings');
     }
 }

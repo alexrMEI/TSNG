@@ -88,6 +88,10 @@ class AnimaisController extends Controller
     ///////// ## API ## /////////
 
     public function updateTemperaturaAgua(Request $request, $animalId){
-        
+        $temperatura = $request->('temperatura');
+
+        $doseadorAguaId = DB::table('animais')->where('id', $animalId)->get('doseador_agua_id');
+
+        DB::table('doseadores_agua')->where('id', $doseadoresAguaId)->update(['temperatura', $temperatura]);
     }
 }

@@ -89,9 +89,37 @@ class AnimaisController extends Controller
 
     public function updateTemperaturaAgua(Request $request, $animalId){
         $temperatura = $request->('temperatura');
+        
+        if($temperatura != null){
+            $doseadorAguaId = DB::table('animais')->where('id', $animalId)->get('doseador_agua_id');
+            
+            if($doseadorAguaId != null){
+                DB::table('doseadores_agua')->where('id', $doseadorAguaId)->update(['temperatura', $temperatura]);
+            }
+        }
+    }
 
-        $doseadorAguaId = DB::table('animais')->where('id', $animalId)->get('doseador_agua_id');
+    public function updateQuantidadeAgua(Request $request, $animalId){
+        $quantidade = $request->('quantidade');
 
-        DB::table('doseadores_agua')->where('id', $doseadoresAguaId)->update(['temperatura', $temperatura]);
+        if ($quantidade != null){
+            $doseadorAguaId = DB::table('animais')->where('id', $animalId)->get('doseador_agua_id');
+            
+            if($doseadorAguaId != null){
+                DB::table('doseadores_agua')->where('id', $doseadorAguaId)->update(['quantidade', $quantidade]);
+            }
+        }
+    }
+
+    public function updateQuantidadeComida(Request $request, $animalId){
+        $quantidade = $request->('quantidade');
+
+        if ($quantidade != null){
+            $doseadorComidaId = DB::table('animais')->where('id', $animalId)->get('doseador_comida_id');
+            
+            if($doseadorComidaId != null){
+                DB::table('doseadores_comida')->where('id', $doseadorComidaId)->update(['quantidade', $quantidade]);
+            }
+        }
     }
 }

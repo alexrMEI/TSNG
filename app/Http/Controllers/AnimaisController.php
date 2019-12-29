@@ -47,7 +47,7 @@ class AnimaisController extends Controller
 
         $doseador = new DoseadorAgua;
 
-        $doseador->vazio = true;
+        $doseador->quantidade = 0;
         $doseador->temperatura = 18.0;
 
         $doseador->save();
@@ -88,7 +88,7 @@ class AnimaisController extends Controller
     ///////// ## API ## /////////
 
     public function updateTemperaturaAgua(Request $request, $doseadorId){
-        $temperatura = $request->('temperatura');
+        $temperatura = $request->temperatura;
         
         if($temperatura != null){
             DB::table('doseadores_agua')->where('identificador', $doseadorId)->update(['temperatura', $temperatura]);
@@ -96,7 +96,7 @@ class AnimaisController extends Controller
     }
 
     public function updateQuantidadeAgua(Request $request, $doseadorId){
-        $quantidade = $request->('quantidade');
+        $quantidade = $request->quantidade;
 
         if ($quantidade != null){
             DB::table('doseadores_agua')->where('identificador', $doseadorId)->update(['quantidade', $quantidade]);
@@ -104,7 +104,7 @@ class AnimaisController extends Controller
     }
 
     public function updateQuantidadeComida(Request $request, $doseadorId){
-        $quantidade = $request->('quantidade');
+        $quantidade = $request->quantidade;
 
         if ($quantidade != null){
             DB::table('doseadores_comida')->where('identificador', $doseadorId)->update(['quantidade', $quantidade]);

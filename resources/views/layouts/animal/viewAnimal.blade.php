@@ -42,7 +42,7 @@
 							<div class="form-group row col-form-label control-label">
 								<div>
 									@if($doseadorAguaAnimal)
-										@if($doseadorAguaAnimal->vazio)
+										@if($doseadorAguaAnimal->quantidade == 0)
 											<label class="col-md-12 text-danger font-weight-bold">Não tem àgua!</label>
 										@else
 											<label class="col-md-12 texts-success font-weight-bold">Abastecido</label>
@@ -50,7 +50,7 @@
 
 										<label class="col-md-12">Temperatura: {{ $doseadorAguaAnimal->temperatura }}</label>
 
-										<label class="col-md-12">Quantidade: </label>
+										<label class="col-md-12">Quantidade: {{ $doseadorAguaAnimal->quantidade }}</label>
 									@else
 										<label class="col-md-12">Não tem doseador...</label>
 									@endif
@@ -79,8 +79,6 @@
 										@else
 											<label class="col-md-12 texts-success font-weight-bold">Abastecido</label>
 										@endif
-
-										<label class="col-md-12">Quantidade: </label>
 									@else
 										<label class="col-md-12">Não tem doseador...</label>
 									@endif

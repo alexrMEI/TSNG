@@ -87,39 +87,27 @@ class AnimaisController extends Controller
 
     ///////// ## API ## /////////
 
-    public function updateTemperaturaAgua(Request $request, $animalId){
+    public function updateTemperaturaAgua(Request $request, $doseadorId){
         $temperatura = $request->('temperatura');
         
         if($temperatura != null){
-            $doseadorAguaId = DB::table('animais')->where('id', $animalId)->get('doseador_agua_id');
-            
-            if($doseadorAguaId != null){
-                DB::table('doseadores_agua')->where('id', $doseadorAguaId)->update(['temperatura', $temperatura]);
-            }
+            DB::table('doseadores_agua')->where('identificador', $doseadorId)->update(['temperatura', $temperatura]);
         }
     }
 
-    public function updateQuantidadeAgua(Request $request, $animalId){
+    public function updateQuantidadeAgua(Request $request, $doseadorId){
         $quantidade = $request->('quantidade');
 
         if ($quantidade != null){
-            $doseadorAguaId = DB::table('animais')->where('id', $animalId)->get('doseador_agua_id');
-            
-            if($doseadorAguaId != null){
-                DB::table('doseadores_agua')->where('id', $doseadorAguaId)->update(['quantidade', $quantidade]);
-            }
+            DB::table('doseadores_agua')->where('identificador', $doseadorId)->update(['quantidade', $quantidade]);
         }
     }
 
-    public function updateQuantidadeComida(Request $request, $animalId){
+    public function updateQuantidadeComida(Request $request, $doseadorId){
         $quantidade = $request->('quantidade');
 
         if ($quantidade != null){
-            $doseadorComidaId = DB::table('animais')->where('id', $animalId)->get('doseador_comida_id');
-            
-            if($doseadorComidaId != null){
-                DB::table('doseadores_comida')->where('id', $doseadorComidaId)->update(['quantidade', $quantidade]);
-            }
+            DB::table('doseadores_comida')->where('identificador', $doseadorId)->update(['quantidade', $quantidade]);
         }
     }
 

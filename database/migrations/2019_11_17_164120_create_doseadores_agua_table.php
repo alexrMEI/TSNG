@@ -17,7 +17,7 @@ class CreateDoseadoresAguaTable extends Migration
             $table->bigIncrements('id');
             $table->double('temperatura', 10, 2);
             $table->double('quantidade', 10, 2);
-            $table->string('identificador')->default('');
+            $table->string('identificador', 191)->default('');
             $table->timestamps();
         });
     }

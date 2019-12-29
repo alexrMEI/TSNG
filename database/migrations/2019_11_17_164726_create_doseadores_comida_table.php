@@ -16,7 +16,7 @@ class CreateDoseadoresComidaTable extends Migration
         Schema::create('doseadores_comida', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('vazio')->default(0);
-            $table->string('identificador')->default('');
+            $table->string('identificador', 191)->default('');
             $table->timestamps();
         });
     }

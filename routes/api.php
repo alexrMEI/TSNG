@@ -17,8 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->put('/doseadores/{doseadorId}/temperaturaAgua', 'AnimaisController@updateTemperaturaAgua');
+Route::put('/doseadores/{doseadorId}/temperaturaAgua', 'AnimaisController@updateTemperaturaAgua');
 
-Route::middleware('auth:api')->put('/doseadores/{doseadorId}/quantidadeAgua', 'AnimaisController@updateQuantidadeAgua');
+Route::put('/doseadores/{doseadorId}/quantidadeAgua', 'AnimaisController@updateQuantidadeAgua');
 
-Route::middleware('auth:api')->put('/doseadores/{doseadorId}/quantidadeComida', 'AnimaisController@updateQuantidadeComida');
+Route::put('/doseadores/{doseadorId}/quantidadeComida', 'AnimaisController@updateQuantidadeComida');

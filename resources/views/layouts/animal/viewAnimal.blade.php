@@ -9,6 +9,7 @@
 				<div class="card-header">
 					<div class="lead">
                         {{ $animalClass->nome }}
+                        <a class="btn btn-danger float-right" href="{{ route('deleteAnimal', $animalClass->id) }}">Delete</a>
                     </div>
 				</div>
 				<div class="card-body">
@@ -36,6 +37,7 @@
 		                    </div>
 		                    <div class="d-inline float-right">
 		                        <button class=" btn btn-primary" data-toggle="modal" data-target="#aguaModal">Adicionar</button>
+		                        <a class="btn btn-danger float-right" onclick="return confirm('Vai eleminar o doseador, pretende continuar?')" href="{{ route('deleteDoseadorAgua', $animalClass->id) }}">Delete</a>
 		                    </div>
 						</div>
 						<div class="card-body">
@@ -43,7 +45,8 @@
 								<div>
 									@if($doseadorAguaAnimal)
 										@if($doseadorAguaAnimal->quantidade == 0)
-											<label class="col-md-12 text-danger font-weight-bold">Não tem àgua!</label>
+											<label class="col-md-6 text-danger font-weight-bold">Não tem água!</label>
+											<a class="btn btn-success float-right" href="">Dar Água</a>
 										@else
 											<label class="col-md-12 texts-success font-weight-bold">Abastecido</label>
 										@endif
@@ -68,6 +71,7 @@
 		                    </div>
 		                    <div class="d-inline float-right">
 		                        <button class=" btn btn-primary" data-toggle="modal" data-target="#comidaModal">Adicionar</button>
+		                        <a class="btn btn-danger float-right" onclick="return confirm('Vai eleminar o doseador, pretende continuar?')" href="{{ route('deleteDoseadorComida', $animalClass->id) }}">Delete</a>
 		                    </div>
 						</div>
 						<div class="card-body">
@@ -75,7 +79,8 @@
 								<div >
 									@if($doseadorComidaAnimal)
 										@if($doseadorComidaAnimal->vazio)
-											<label class="col-md-12 text-danger font-weight-bold">Não tem comida!</label>
+											<label class="col-md-6 text-danger font-weight-bold">Não tem comida!</label>
+											<a class="btn btn-success float-right" href="">Dar Comida</a>
 										@else
 											<label class="col-md-12 texts-success font-weight-bold">Abastecido</label>
 										@endif

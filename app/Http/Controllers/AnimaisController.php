@@ -119,6 +119,8 @@ class AnimaisController extends Controller
    
         $request = $client->post($url);
         $response = $request->send();
+
+        return $this->viewAnimal($animal);
     }
 
     public function darComida($doseador){
@@ -130,6 +132,8 @@ class AnimaisController extends Controller
    
         $request = $client->post($url);
         $response = $request->send();
+
+        return $this->viewAnimal($animal);
     }
 
 

@@ -36,8 +36,8 @@ class AnimaisController extends Controller
 
     public function viewAnimal($animal){
         $animalClass = DB::table('animais')->where('id', $animal)->first();
-        $doseadoresAgua = DB::table('animais')->where('doseador_agua_id', '!=', null)->where('id', '!=', $animal)->get();
-        $doseadoresComida = DB::table('animais')->where('doseador_comida_id', '!=', null)->where('id', '!=', $animal)->get();
+        $doseadoresAgua = DB::table('animais')->where('doseador_agua_id', '!=', null)->where('id', '!=', $animal)->where('user_id', Auth::id())->get();
+        $doseadoresComida = DB::table('animais')->where('doseador_comida_id', '!=', null)->where('id', '!=', $animal)->where('user_id', Auth::id())->get();
         $doseadorAguaAnimal = DB::table('doseadores_agua')->where('id', $animalClass->doseador_agua_id)->first();
         $doseadorComidaAnimal = DB::table('doseadores_comida')->where('id', $animalClass->doseador_comida_id)->first();
         return view('layouts.animal.viewAnimal')->with(compact('animalClass', 'doseadoresAgua', 'doseadoresComida', 'doseadorAguaAnimal', 'doseadorComidaAnimal'));
@@ -110,7 +110,27 @@ class AnimaisController extends Controller
         return $this->viewAnimal($animal);
     }
 
+    public function darAgua($doseador){
+        var identificador = DB::table('doseadores_agua')->select('identificador')->where('id', $doseador)->get();
+        var raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
 
+        $client = new \GuzzleHttp\Client();
+        $url = "http://" + raspIP + "/" + identificador + "/darAgua";
+   
+        $request = $client->post($url);
+        $response = $request->send();
+    }
+
+    public function darComida($doseador){
+        var identificador = DB::table('doseadores_comida')->select('identificador')->where('id', $doseador)->get();
+        var raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
+
+        $client = new \GuzzleHttp\Client();
+        $url = "http://" + raspIP + "/" + identificador + "/darComida";
+   
+        $request = $client->post($url);
+        $response = $request->send();
+    }
 
 
     ///////// ## API ## /////////

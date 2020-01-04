@@ -46,7 +46,7 @@
 									@if($doseadorAguaAnimal)
 										@if($doseadorAguaAnimal->quantidade == 0)
 											<label class="col-md-6 text-danger font-weight-bold">Não tem água!</label>
-											<a class="btn btn-success float-right" href="">Dar Água</a>
+											<a class="btn btn-success float-right" href="{{ route('darAgua', $doseadorAguaAnimal->id ) }}">Dar Água</a>
 										@else
 											<label class="col-md-12 texts-success font-weight-bold">Abastecido</label>
 										@endif
@@ -80,7 +80,7 @@
 									@if($doseadorComidaAnimal)
 										@if($doseadorComidaAnimal->vazio)
 											<label class="col-md-6 text-danger font-weight-bold">Não tem comida!</label>
-											<a class="btn btn-success float-right" href="">Dar Comida</a>
+											<a class="btn btn-success float-right" href="{{ route('darComida', $doseadorComidaAnimal->id ) }}">Dar Comida</a>
 										@else
 											<label class="col-md-12 texts-success font-weight-bold">Abastecido</label>
 										@endif

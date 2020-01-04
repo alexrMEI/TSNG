@@ -26,7 +26,8 @@ Route::get('/animal/{animal}/agua', 'AnimaisController@addDoseadorAgua')->name('
 Route::get('/animal/{animal}/comida', 'AnimaisController@addDoseadorComida')->name('addDoseadorComida');
 Route::get('/animal/{animal}/agua/{doseador}', 'AnimaisController@updateDoseadorAgua')->name('updateDoseadorAgua');
 Route::get('/animal/{animal}/comida/{doseador}', 'AnimaisController@updateDoseadorComida')->name('updateDoseadorComida');
-
+Route::get('/doseador/{doseador}/darAgua/', 'AnimaisController@darAgua')->name('darAgua');
+Route::get('/doseador/{doseador}/darComida/', 'AnimaisController@darComida')->name('darComida');
 Route::get('/delete/{id}', 'AnimaisController@deleteAnimal')->name('deleteAnimal');
 Route::get('/deleteAgua/{id}', 'AnimaisController@deleteDoseadorAgua')->name('deleteDoseadorAgua');
 Route::get('/deleteComida/{id}', 'AnimaisController@deleteDoseadorComida')->name('deleteDoseadorComida');

@@ -17,6 +17,7 @@ class CreateDoseadoresComidaTable extends Migration
             $table->bigIncrements('id');
             $table->boolean('vazio')->default(0);
             $table->string('identificador', 191)->default('');
+            $table->string('last_update', 191)->nullable();
             $table->timestamps();
         });
     }

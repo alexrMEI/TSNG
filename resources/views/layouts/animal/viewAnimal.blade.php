@@ -58,7 +58,6 @@
 										<label class="col-md-12">Não tem doseador...</label>
 									@endif
 								</div>
-								</select>
 							</div>
 						</div>
 					</div>
@@ -82,13 +81,12 @@
 											<label class="col-md-6 text-danger font-weight-bold">Não tem comida!</label>
 											<a class="btn btn-success float-right" href="{{ route('darComida', $doseadorComidaAnimal->id ) }}">Dar Comida</a>
 										@else
-											<label class="col-md-12 texts-success font-weight-bold">Abastecido</label>
+											<label class="col-md-12 texts-success font-weight-bold">,Abastecido</label>
 										@endif
 									@else
 										<label class="col-md-12">Não tem doseador...</label>
 									@endif
 								</div>
-								</select>
 							</div>
 						</div>
 					</div>

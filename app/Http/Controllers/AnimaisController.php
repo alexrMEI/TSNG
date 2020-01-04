@@ -111,22 +111,22 @@ class AnimaisController extends Controller
     }
 
     public function darAgua($doseador){
-        var identificador = DB::table('doseadores_agua')->select('identificador')->where('id', $doseador)->get();
-        var raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
+        $identificador = DB::table('doseadores_agua')->select('identificador')->where('id', $doseador)->get();
+        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
 
         $client = new \GuzzleHttp\Client();
-        $url = "http://" + raspIP + "/" + identificador + "/darAgua";
+        $url = "http://" + $raspIP + "/" + $identificador + "/darAgua";
    
         $request = $client->post($url);
         $response = $request->send();
     }
 
     public function darComida($doseador){
-        var identificador = DB::table('doseadores_comida')->select('identificador')->where('id', $doseador)->get();
-        var raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
+        $identificador = DB::table('doseadores_comida')->select('identificador')->where('id', $doseador)->get();
+        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
 
         $client = new \GuzzleHttp\Client();
-        $url = "http://" + raspIP + "/" + identificador + "/darComida";
+        $url = "http://" + $raspIP + "/" + $identificador + "/darComida";
    
         $request = $client->post($url);
         $response = $request->send();
@@ -137,11 +137,12 @@ class AnimaisController extends Controller
 
     public function updateTemperaturaAgua(Request $request, $doseadorId){
         $temperatura = $request->temperatura;
+        $lastUpdate = $request->timestamp;
         
         if($temperatura != null){
             DB::table('doseadores_agua')
             ->where('identificador', $doseadorId)
-            ->update(['temperatura' => $temperatura]);
+            ->update(['temperatura' => $temperatura, 'last_update' => $lastUpdate]);
         }
     }
 

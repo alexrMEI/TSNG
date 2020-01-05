@@ -205,7 +205,7 @@ class AnimaisController extends Controller
             if(DB::table('raspberry_info')->where('key', $key)->count()){
                 $raspIP = DB::table('raspberry_info')->where('key', $key)->select('rasp_ip')->first();
 
-                DB::table('users')->where('id', Auth::id())->update(['raspberry_ip' => $raspIP]);
+                DB::table('users')->where('id', Auth::id())->update(['raspberry_ip' => $raspIP->rasp_ip]);
 
                 DB::table('raspberry_info')->where('key', $key)->delete();
             }

@@ -119,28 +119,29 @@ class AnimaisController extends Controller
 
         if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
-            $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darAgua";
+            $url = "http://" . $raspIP->raspberry_ip . ":1880/darAgua";
+            //$test = "http://192.168.1.97:1880/text";
 
-            $request = new Psr7('POST', $url);
-            $response = $client->send($request, ['timeout' => 10]);
-                   
-            //$request = $client->post($url);
-            //$response = $request->send();
+            $r = $client->request('POST', $url, [
+                'body' => $identificador->identificador
+            ]);
         }
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
-    public function darComida($doseador){
+    public function darComida($doseador, $animal){
         $identificador = DB::table('doseadores_comida')->select('identificador')->where('id', $doseador)->first();
         $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->first();
 
-        if ($identificador != null && $identificador != "" && $raspIP != null && $raspIP != ""){
+        if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
-            $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darComida";
-       
-            $request = $client->post($url);
-            $response = $request->send();
+            $url = "http://" . $raspIP->raspberry_ip . ":1880/darComida";
+            //$test = "http://192.168.1.97:1880/text";
+
+            $r = $client->request('POST', $url, [
+                'body' => $identificador->identificador
+            ]);
         }
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);

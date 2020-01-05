@@ -96,19 +96,17 @@
                         {{ method_field('POST') }}
                         {{ csrf_field() }}
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-md-9 w-100">
                                 <input id="key" type="text" name="key" class="form-control" placeholder="chave" required autofocus>
                             </div>
-                        </div>
-                        <div class="float-right">
-                            <div class="row form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Guardar
-                                    </button>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="col-md-3">
+                                <div class="float-right">
+                                    <div class="row form-group">
+                                        <button type="submit" class="btn btn-primary col-md-12">
+                                            Guardar
+                                        </button>
+                                        <button type="button" class="btn btn-secondary col-md-12" data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

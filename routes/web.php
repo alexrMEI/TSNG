@@ -30,4 +30,4 @@ Route::get('/doseador/{doseador}/darComida/{animal}', 'AnimaisController@darComi
 Route::get('/delete/{id}', 'AnimaisController@deleteAnimal')->name('deleteAnimal');
 Route::get('/deleteAgua/{id}', 'AnimaisController@deleteDoseadorAgua')->name('deleteDoseadorAgua');
 Route::get('/deleteComida/{id}', 'AnimaisController@deleteDoseadorComida')->name('deleteDoseadorComida');
-//Route::post('')
+Route::get('/infoSistema', 'AnimaisController@infoSistema')->name('infoSistema');

@@ -56,7 +56,7 @@ class AnimaisController extends Controller
 
         $doseador->quantidade = 0;
         $doseador->temperatura = 18.0;
-        $doseador->identificador = "ESPWater_" . geraCodigo();
+        $doseador->identificador = "ESPWater_" . $this->geraCodigo();
 
         $doseador->save();
 
@@ -81,7 +81,7 @@ class AnimaisController extends Controller
         $doseador = new DoseadorComida;
 
         $doseador->vazio = true;
-        $doseador->identificador = "ESPFood_" . geraCodigo(); 
+        $doseador->identificador = "ESPFood_" . $this->geraCodigo(); 
 
         $doseador->save();
 
@@ -147,9 +147,7 @@ class AnimaisController extends Controller
         return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
-
     ///////// ## API ## /////////
-
     public function updateTemperaturaAgua(Request $request, $doseadorId){
         $temperatura = $request->temperatura;
         $lastUpdate = $request->timestamp;
@@ -182,16 +180,37 @@ class AnimaisController extends Controller
     }
 
     public function identifiers(Request $request){
-        $rpi = $request->rpi;
         $rpiIP = $request->rpiIP;
+        $key = $request->key;
 
-        dd($rpi . " " . $rpiIP);
+        if(!DB::table('raspberry_info')->where('key', $key)->count()){
+            $raspInfo = new RaspberryInfo;
+            $raspInfo->rasp_ip = $rpiIP;
+            $raspInfo->key = $key;
+            $raspInfo->save();
+        }
     }
-
     ///////// ## API ## /////////
 
     public function geraCodigo(){
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         return substr(str_shuffle($permitted_chars), 0, 8);
+    }
+
+    public function infoSistema(Request $request){
+        $key = $request->key;
+
+        if($key != null && $key != ""){
+            if(DB::table('raspberry_info')->where('key', $key)->count()){
+                $raspIP = DB::table('raspberry_info')->where('key', $key)->select('raspberry_ip')->first();
+
+                DB::table('users')->where('id', Auth::id())->update(['raspberry_ip' => $raspIP]);
+
+                DB::table('raspberry_info')->where('key', $key)->delete();
+            }
+        }
+
+        $animaisArray = DB::table('animais')->where('user_id', Auth::id())->get();
+        return redirect()->route('home')->with(compact('animaisArray'));
     }
 }

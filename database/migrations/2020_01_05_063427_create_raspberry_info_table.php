@@ -15,7 +15,6 @@ class CreateRaspberryInfoTable extends Migration
     {
         Schema::create('raspberry_info', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('rasp_id', 191);
             $table->string('rasp_ip', 191);
             $table->string('key', 191);
             $table->timestamps();

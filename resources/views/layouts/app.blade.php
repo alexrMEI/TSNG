@@ -49,7 +49,7 @@
                                 </li>
                             @endif
                         @else
-                            <button class="btn btn-default" >
+                            <button class="btn btn-default" data-toggle="modal" data-target="#chaveModal">
                                 Registar Sistema
                             </button>
 
@@ -79,6 +79,43 @@
         <main class="py-4">
             @yield('content')
         </main>
+    </div>
+
+    <!-- Key Modal -->
+    <div class="modal fade" id="chaveModal" tabindex="-1" role="dialog" aria-labelledby="chaveModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chaveModalLabel">Inserir chave do sistema</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body row">
+                    <form class="form-horizontal" method="post" action="{{ route('infoSistema') }}">
+                        {{ method_field('POST') }}
+                        {{ csrf_field() }}
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="key" type="text" name="key" class="form-control" placeholder="chave" required autofocus>
+                            </div>
+                        </div>
+                        <div class="float-right">
+                            <div class="row form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Guardar
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

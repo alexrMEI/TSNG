@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Animal;
 use App\DoseadorAgua;
 use App\DoseadorComida;
+use App\RaspberryInfo;
 use Auth;
 use GuzzleHttp\Psr7\Request as Psr7;
 

@@ -13,6 +13,6 @@ class RaspberryInfo extends Model
      * @var array
      */
     protected $fillable = [
-        'rasp_id', 'rasp_ip', 'key'
+        'rasp_ip', 'key'
     ];
 }

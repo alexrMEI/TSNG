@@ -64,6 +64,15 @@ class AnimaisController extends Controller
 
         DB::table('animais')->where('id', $animal)->update(['doseador_agua_id' => $doseador->id]);
 
+        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->first();
+        if($raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
+        $client = new \GuzzleHttp\Client();
+        $url = "http://" . $raspIP->raspberry_ip . ":1880/idAgua";
+
+        $r = $client->request('POST', $url, [
+            'body' => $doseador->identificador;
+        ]);
+
         return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
@@ -87,6 +96,15 @@ class AnimaisController extends Controller
         $doseador->save();
 
         DB::table('animais')->where('id', $animal)->update(['doseador_comida_id' => $doseador->id]);
+
+        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->first();
+        if($raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
+        $client = new \GuzzleHttp\Client();
+        $url = "http://" . $raspIP->raspberry_ip . ":1880/idComida";
+
+        $r = $client->request('POST', $url, [
+            'body' => $doseador->identificador;
+        ]);
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
@@ -121,7 +139,6 @@ class AnimaisController extends Controller
         if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
             $url = "http://" . $raspIP->raspberry_ip . ":1880/darAgua";
-            //$test = "http://192.168.1.97:1880/text";
 
             $r = $client->request('POST', $url, [
                 'body' => $identificador->identificador

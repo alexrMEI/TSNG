@@ -184,7 +184,6 @@ class AnimaisController extends Controller
         $rpi = $request->rpi;
         $rpiIP = $request->rpiIP;
 
-        dd($rpi . " " . $rpiIP);
     }
 
     ///////// ## API ## /////////

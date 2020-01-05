@@ -120,7 +120,7 @@ class AnimaisController extends Controller
             $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darAgua";
 
             $request = new Psr7('POST', $url);
-            $response = $client->send($request, ['timeout' => 2]);
+            $response = $client->send($request, ['timeout' => 10]);
                    
             //$request = $client->post($url);
             //$response = $request->send();

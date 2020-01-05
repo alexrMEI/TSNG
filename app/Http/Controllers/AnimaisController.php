@@ -174,5 +174,13 @@ class AnimaisController extends Controller
         }
     }
 
+    public function identifiers(Request $request){
+        $rpi = $request->rpi;
+        $agua = $resquest->espWater;
+        $comida = $request->espFood;
+
+        //TODO
+    }
+
     ///////// ## API ## /////////
 }

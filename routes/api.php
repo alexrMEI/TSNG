@@ -22,3 +22,5 @@ Route::put('/doseadores/{doseadorId}/temperaturaAgua', 'AnimaisController@update
 Route::put('/doseadores/{doseadorId}/quantidadeAgua', 'AnimaisController@updateQuantidadeAgua');
 
 Route::put('/doseadores/{doseadorId}/quantidadeComida', 'AnimaisController@updateQuantidadeComida');
+
+Route::put('/doseadores', 'AnimaisController@identifiers');

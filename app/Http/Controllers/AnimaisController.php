@@ -56,7 +56,7 @@ class AnimaisController extends Controller
 
         $doseador->quantidade = 0;
         $doseador->temperatura = 18.0;
-        $doseador->identificador = "ESPWater_" . geraCodigo();
+        $doseador->identificador = "ESPWater_" . $this->geraCodigo();
 
         $doseador->save();
 
@@ -81,7 +81,7 @@ class AnimaisController extends Controller
         $doseador = new DoseadorComida;
 
         $doseador->vazio = true;
-        $doseador->identificador = "ESPFood_" . geraCodigo(); 
+        $doseador->identificador = "ESPFood_" . $this->geraCodigo(); 
 
         $doseador->save();
 

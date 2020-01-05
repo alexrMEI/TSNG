@@ -56,6 +56,7 @@ class AnimaisController extends Controller
 
         $doseador->quantidade = 0;
         $doseador->temperatura = 18.0;
+        $doseador->identificador = "ESPWater_" . geraCodigo();
 
         $doseador->save();
 
@@ -80,6 +81,7 @@ class AnimaisController extends Controller
         $doseador = new DoseadorComida;
 
         $doseador->vazio = true;
+        $doseador->identificador = "ESPFood_" . geraCodigo(); 
 
         $doseador->save();
 
@@ -180,11 +182,15 @@ class AnimaisController extends Controller
 
     public function identifiers(Request $request){
         $rpi = $request->rpi;
-        $agua = $resquest->espWater;
-        $comida = $request->espFood;
+        $rpiIP = $request->rpiIP;
 
-        //TODO
+        dd($rpi . " " . $rpiIP);
     }
 
     ///////// ## API ## /////////
+
+    public function geraCodigo(){
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return substr(str_shuffle($permitted_chars), 0, 8);
+    }
 }

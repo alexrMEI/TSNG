@@ -79,7 +79,7 @@
 									@if($doseadorComidaAnimal)
 										@if($doseadorComidaAnimal->vazio)
 											<label class="col-md-6 text-danger font-weight-bold">Não tem comida!</label>
-											<a class="btn btn-success float-right" href="{{ route('darComida', $doseadorComidaAnimal->id ) }}">Dar Comida</a>
+											<a class="btn btn-success float-right" href="{{ route('darComida', [$doseadorComidaAnimal->id, $animalClass->id] ) }}">Dar Comida</a>
 										@else
 											<label class="col-md-12 texts-success font-weight-bold">,Abastecido</label>
 										@endif
@@ -138,7 +138,7 @@
 	      	</div>
 	      	<div class="modal-body row">
 		      	@forelse($doseadoresComida as $animal)
-		      	<a href="#" class="btn btn-primary align-middle m-1" style="width: 100px; height: 85px;">
+		      	<a href="{{ route('updateDoseadorComida', [$animalClass->id, $animal->doseador_comida_id]) }}" class="btn btn-primary align-middle m-1" style="width: 100px; height: 85px;">
 		            O mesmo que
 		            <br/>
 		            {{ $animal->nome }}

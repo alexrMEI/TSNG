@@ -61,7 +61,7 @@ class AnimaisController extends Controller
 
         DB::table('animais')->where('id', $animal)->update(['doseador_agua_id' => $doseador->id]);
 
-        return $this->viewAnimal($animal);
+        return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
     public function deleteDoseadorAgua($id) {
@@ -84,7 +84,7 @@ class AnimaisController extends Controller
 
         DB::table('animais')->where('id', $animal)->update(['doseador_comida_id' => $doseador->id]);
 
-        return $this->viewAnimal($animal);
+        return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
     public function deleteDoseadorComida($id) {
@@ -101,13 +101,13 @@ class AnimaisController extends Controller
     public function updateDoseadorAgua($animal, $doseador){
         DB::table('animais')->where('id', $animal)->update(['doseador_agua_id' => $doseador]);
 
-        return $this->viewAnimal($animal);
+        return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
     public function updateDoseadorComida($animal, $doseador){
         DB::table('animais')->where('id', $animal)->update(['doseador_comida_id' => $doseador]);
 
-        return $this->viewAnimal($animal);
+        return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
     public function darAgua($doseador, $animal){
@@ -122,7 +122,7 @@ class AnimaisController extends Controller
             $response = $request->send();
         }
 
-        return $this->viewAnimal($animal);
+        return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
     public function darComida($doseador){
@@ -131,13 +131,13 @@ class AnimaisController extends Controller
 
         if ($identificador != null && $identificador != "" && $raspIP != null && $raspIP != ""){
             $client = new \GuzzleHttp\Client();
-            $url = "http://" + $raspIP + "/" + $identificador + "/darComida";
+            $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darComida";
        
             $request = $client->post($url);
             $response = $request->send();
         }
 
-        return $this->viewAnimal($animal);
+        return redirect()->route('viewAnimal', ['animal' => $animal]);
     }
 
 

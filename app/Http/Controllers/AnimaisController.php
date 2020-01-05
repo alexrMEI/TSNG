@@ -182,7 +182,7 @@ class AnimaisController extends Controller
 
     public function identifiers(Request $request){
         $rpiIP = $request->rpiIP;
-        $key = $request->key;
+        $key = $request->rpiID;
 
         if(!DB::table('raspberry_info')->where('key', $key)->count()){
             $raspInfo = new RaspberryInfo;

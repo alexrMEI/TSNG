@@ -110,13 +110,13 @@ class AnimaisController extends Controller
         return $this->viewAnimal($animal);
     }
 
-    public function darAgua($doseador){
+    public function darAgua($doseador, $animal){
         $identificador = DB::table('doseadores_agua')->select('identificador')->where('id', $doseador)->first();
         $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->first();
 
-        if ($identificador != null && $identificador != "" && $raspIP != null && $raspIP != ""){
+        if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
-            $url = "http://" + $raspIP + "/" + $identificador + "/darAgua";
+            $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darAgua";
        
             $request = $client->post($url);
             $response = $request->send();

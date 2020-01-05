@@ -119,7 +119,7 @@ class AnimaisController extends Controller
 
         if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
-            $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darAgua";
+            $url = "http://" . $raspIP->raspberry_ip . ":8080/" . $identificador->identificador . "/darAgua";
 
             $request = new Psr7('POST', $url);
             $response = $client->send($request, ['timeout' => 10]);

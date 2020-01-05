@@ -9,6 +9,7 @@ use App\Animal;
 use App\DoseadorAgua;
 use App\DoseadorComida;
 use Auth;
+use GuzzleHttp\Psr7\Request as Psr7;
 
 class AnimaisController extends Controller
 {
@@ -117,9 +118,12 @@ class AnimaisController extends Controller
         if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
             $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darAgua";
-       
-            $request = $client->post($url);
-            $response = $request->send();
+
+            $request = new Psr7('POST', $url);
+            $response = $client->send($request, ['timeout' => 2]);
+                   
+            //$request = $client->post($url);
+            //$response = $request->send();
         }
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);

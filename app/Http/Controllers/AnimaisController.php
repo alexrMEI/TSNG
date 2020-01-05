@@ -117,6 +117,8 @@ class AnimaisController extends Controller
         $identificador = DB::table('doseadores_agua')->select('identificador')->where('id', $doseador)->first();
         $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->first();
 
+        dd($raspIP);
+
         if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
             $url = "http://" . $raspIP->raspberry_ip . "/" . $identificador->identificador . "/darAgua";

@@ -123,7 +123,6 @@ class AnimaisController extends Controller
 
             $request = new Psr7('POST', $url);
             $response = $client->send($request, ['timeout' => 10]);
-                   
             //$request = $client->post($url);
             //$response = $request->send();
         }

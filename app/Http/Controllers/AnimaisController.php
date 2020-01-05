@@ -144,6 +144,8 @@ class AnimaisController extends Controller
             $r = $client->request('POST', $url, [
                 'body' => $identificador->identificador
             ]);
+            
+            DB::table('doseadores_agua')->where('id', $doseador)->update(['quantidade', 1]);
         }
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);
@@ -156,11 +158,12 @@ class AnimaisController extends Controller
         if ($identificador->identificador != null && $identificador->identificador != "" && $raspIP->raspberry_ip != null && $raspIP->raspberry_ip != ""){
             $client = new \GuzzleHttp\Client();
             $url = "http://" . $raspIP->raspberry_ip . ":1880/darComida";
-            //$test = "http://192.168.1.97:1880/text";
 
             $r = $client->request('POST', $url, [
                 'body' => $identificador->identificador
             ]);
+            
+            DB::table('doseadores_comida')->where('id', $doseador)->update(['vazio', 0]);
         }
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);

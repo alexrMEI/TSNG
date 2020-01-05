@@ -35,33 +35,6 @@
                     @endforelse
                 </div>
             </div>
-            <br>
-            <div class="card">
-                <div class="card-header">
-                    IP do Sistema
-                </div> 
-                <div class="card-body">
-                    <form class="form-horizontal" method="post" action="{{ route('saveAnimal') }}">
-                        {{ method_field('POST') }}
-                        {{ csrf_field() }}
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <input id="nome" type="text" name="nome" class="form-control" required autofocus>
-                            </div>
-                        </div>
-                        <div class="float-right">
-                            <div class="row form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Criar
-                                    </button>
-                                </div>
-                                <a class="btn btn-secondary" href="{{url()->previous()}}">Voltar</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>                
-            </div>
         </div>
     </div>
 </div>

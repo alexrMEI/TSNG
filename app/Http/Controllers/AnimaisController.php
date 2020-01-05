@@ -111,27 +111,31 @@ class AnimaisController extends Controller
     }
 
     public function darAgua($doseador){
-        $identificador = DB::table('doseadores_agua')->select('identificador')->where('id', $doseador)->get();
-        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
+        $identificador = DB::table('doseadores_agua')->select('identificador')->where('id', $doseador)->first();
+        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->first();
 
-        $client = new \GuzzleHttp\Client();
-        $url = "http://" + $raspIP + "/" + $identificador + "/darAgua";
-   
-        $request = $client->post($url);
-        $response = $request->send();
+        if ($identificador != null && $identificador != "" && $raspIP != null && $raspIP != ""){
+            $client = new \GuzzleHttp\Client();
+            $url = "http://" + $raspIP + "/" + $identificador + "/darAgua";
+       
+            $request = $client->post($url);
+            $response = $request->send();
+        }
 
         return $this->viewAnimal($animal);
     }
 
     public function darComida($doseador){
-        $identificador = DB::table('doseadores_comida')->select('identificador')->where('id', $doseador)->get();
-        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->get();
+        $identificador = DB::table('doseadores_comida')->select('identificador')->where('id', $doseador)->first();
+        $raspIP = DB::table('users')->select('raspberry_ip')->where('id', Auth::id())->first();
 
-        $client = new \GuzzleHttp\Client();
-        $url = "http://" + $raspIP + "/" + $identificador + "/darComida";
-   
-        $request = $client->post($url);
-        $response = $request->send();
+        if ($identificador != null && $identificador != "" && $raspIP != null && $raspIP != ""){
+            $client = new \GuzzleHttp\Client();
+            $url = "http://" + $raspIP + "/" + $identificador + "/darComida";
+       
+            $request = $client->post($url);
+            $response = $request->send();
+        }
 
         return $this->viewAnimal($animal);
     }

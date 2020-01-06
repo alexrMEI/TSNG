@@ -78,10 +78,12 @@
 								<div >
 									@if($doseadorComidaAnimal)
 										@if($doseadorComidaAnimal->vazio)
-											<label class="col-md-6 text-danger font-weight-bold">Não tem comida!</label>
-											<a class="btn btn-success float-right" href="{{ route('darComida', [$doseadorComidaAnimal->id, $animalClass->id] ) }}">Dar Comida</a>
+											<label class="col-md-12 text-danger font-weight-bold">Não tem comida!</label>
 										@else
-											<label class="col-md-12 texts-success font-weight-bold">,Abastecido</label>
+											<label class="col-md-10 texts-success font-weight-bold">Abastecido</label>
+											<div class="col-md-2 float-right">
+												<a class="btn btn-success" href="{{ route('darComida', [$doseadorComidaAnimal->id, $animalClass->id] ) }}">Dar Comida</a>
+											</div>
 										@endif
 									@else
 										<label class="col-md-12">Não tem doseador...</label>

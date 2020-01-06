@@ -145,7 +145,7 @@ class AnimaisController extends Controller
                 'body' => $identificador->identificador
             ]);
             
-            DB::table('doseadores_agua')->where('id', $doseador)->update(['quantidade', 1]);
+            DB::table('doseadores_agua')->where('id', $doseador)->update(['quantidade' => 1]);
         }
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);
@@ -162,8 +162,6 @@ class AnimaisController extends Controller
             $r = $client->request('POST', $url, [
                 'body' => $identificador->identificador
             ]);
-            
-            DB::table('doseadores_comida')->where('id', $doseador)->update(['vazio', 0]);
         }
 
         return redirect()->route('viewAnimal', ['animal' => $animal]);

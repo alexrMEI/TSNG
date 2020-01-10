@@ -142,7 +142,7 @@ class AnimaisController extends Controller
             $url = "http://" . $raspIP->raspberry_ip . ":1880/darAgua";
 
             $r = $client->request('POST', $url, [
-                'body' => $identificador->identificador
+                'body' => 'Encher:' . $identificador->identificador
             ]);
             
             DB::table('doseadores_agua')->where('id', $doseador)->update(['quantidade' => 1]);
@@ -160,7 +160,7 @@ class AnimaisController extends Controller
             $url = "http://" . $raspIP->raspberry_ip . ":1880/darComida";
 
             $r = $client->request('POST', $url, [
-                'body' => $identificador->identificador
+                'body' => 'Encher:' . $identificador->identificador
             ]);
         }
 

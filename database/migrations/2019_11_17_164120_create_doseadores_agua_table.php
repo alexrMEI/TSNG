@@ -16,7 +16,7 @@ class CreateDoseadoresAguaTable extends Migration
         Schema::create('doseadores_agua', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->double('temperatura', 10, 2);
-            $table->double('quantidade', 10, 2);
+            $table->boolean('quantidade')->default(0);
             $table->string('identificador', 191)->default('');
             $table->string('last_update', 191)->nullable();
             $table->timestamps();

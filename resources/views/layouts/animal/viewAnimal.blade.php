@@ -44,7 +44,7 @@
 							<div class="form-group row col-form-label control-label">
 								<div>
 									@if($doseadorAguaAnimal)
-										@if($doseadorAguaAnimal->quantidade == 0)
+										@if(!$doseadorAguaAnimal->quantidade)
 											<label class="col-md-6 text-danger font-weight-bold">Não tem água!</label>
 											<a class="btn btn-success float-right" href="{{ route('darAgua', [$doseadorAguaAnimal->id, $animalClass->id] ) }}">Dar Água</a>
 										@else
@@ -52,8 +52,6 @@
 										@endif
 
 										<label class="col-md-12">Temperatura: {{ $doseadorAguaAnimal->temperatura }}</label>
-
-										<label class="col-md-12">Quantidade: {{ $doseadorAguaAnimal->quantidade }}</label>
 									@else
 										<label class="col-md-12">Não tem doseador...</label>
 									@endif

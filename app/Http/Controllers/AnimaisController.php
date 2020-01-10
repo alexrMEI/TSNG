@@ -195,7 +195,7 @@ class AnimaisController extends Controller
         if ($quantidade != null){
             DB::table('doseadores_comida')
             ->where('identificador', $doseadorId)
-            ->update(['quantidade' => $quantidade]);
+            ->update(['vazio' => $quantidade]);
         }
     }
 
